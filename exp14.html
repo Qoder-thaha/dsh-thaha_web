@@ -1,40 +1,260 @@
+
 <html>
 <head>
- <title> Form validation </title>
-<script>
-  function validate form(){
-         var name=document.getElementById("name").value;
-         var email=document.getElementById("email").value;
-         var mobile=document.getElementById("mobile").value;
-         
-         if (name==""){
-                  alert("enter your name");
-                  return false;
-                 }
-         if (email=="" || !email.includes("@")){
-                  alert("enter a valid email");
-                  return false;
-                }
-         if (mobile.length!=10 || isNaN(mobile)){
-                  alert("enter a valid 10 digit mobile number");
-                  return false;
-                 }
-                  alert("form submitted successfully");
-                  return true;
-                }
-</script>
+<title>Reg Form</title>
+<style>
+table {
+    border-collapse: collapse;
+    width: 700px;
+    margin: 20px auto;
+}
+td {
+    border: 1px solid black;
+    padding: 6px;
+    vertical-align: middle;
+}
+h1 {
+    text-align: center;
+}
+input[type="text"], input[type="email"],
+input[type="date"], input[type="number"],
+input[type="password"], textarea, select {
+    width: 95%;
+    box-sizing: border-box;
+}
+.qual-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.qual-table td, .qual-table th {
+    border: 1px solid black;
+    padding: 4px;
+    text-align: center;
+}
+.qual-table input {
+    width: 95%;
+    box-sizing: border-box;
+}
+</style>
 </head>
 <body>
-        <h2> registration form</h2>
-        <form onsubmit="return validate()">
-        name:
-           <input type="text" id="name"><br><br>
-        email:
-           <input type="text" id="email"><br><br>
-        mobile:
-           <input type="text" id="mobile"><br><br>
-           <input type="submit" value="submit">
 
-        </form>
+<h1>Student Form</h1>
+
+<form onsubmit="return validateform()">
+<table>
+<tr>
+<td>First name:</td>
+<td><input type="text" id="fname"></td>
+<td></td>
+</tr>
+<tr>
+<td>Last name:</td>
+<td><input type="text" id="lname"></td>
+<td></td>
+</tr>
+<tr>
+<td>Email:</td>
+<td><input type="email" id="email"></td>
+<td></td>
+</tr>
+<tr>
+<td>DOB:</td>
+<td><input type="date" id="dob"></td>
+<td></td>
+</tr>
+<tr>
+<td>Mobile:</td>
+<td><input type="text" id="mobile"></td>
+<td></td>
+</tr>
+<tr>
+<td>Gender:</td>
+<td>
+<input type="radio" name="gender" value="male">Male
+<input type="radio" name="gender" value="female">Female
+</td>
+<td></td>
+</tr>
+<tr>
+<td>Address:</td>
+<td><textarea id="address" rows="2"></textarea></td>
+<td></td>
+</tr>
+<tr>
+<td>City:</td>
+<td><input type="text" id="city" maxlength="30"></td>
+<td>Max 30 characters</td>
+</tr>
+<tr>
+<td>Pincode:</td>
+<td><input type="text" id="pin"></td>
+<td></td>
+</tr>
+<tr>
+<td>State:</td>
+<td><input type="text" id="state"></td>
+<td></td>
+</tr>
+<tr>
+<td>Country:</td>
+<td><input type="text" id="country"></td>
+<td></td>
+</tr>
+<tr>
+<td>Hobbies:</td>
+<td colspan="2">
+<input type="checkbox" name="hobby">Dancing
+<input type="checkbox" name="hobby">Singing
+<input type="text" id="other" placeholder="Other hobby" style="width:120px">
+</td>
+</tr>
+
+<tr>
+<td>Qualification</td>
+<td colspan="2">
+<table class="qual-table">
+<tr>
+<th>Sl No</th>
+<th>Exam</th>
+<th>Board</th>
+<th>Percentage</th>
+<th>Year</th>
+</tr>
+<tr>
+<td>1</td><td>Class X</td>
+<td><input type="text" class="board"></td>
+<td><input type="number" class="percent" min="0" max="100" step="0.01"></td>
+<td><input type="text" class="year"></td>
+</tr>
+<tr>
+<td>2</td><td>+2</td>
+<td><input type="text" class="board"></td>
+<td><input type="number" class="percent" min="0" max="100" step="0.01"></td>
+<td><input type="text" class="year"></td>
+</tr>
+<tr>
+<td>3</td><td>Degree</td>
+<td><input type="text" class="board"></td>
+<td><input type="number" class="percent" min="0" max="100" step="0.01"></td>
+<td><input type="text" class="year"></td>
+</tr>
+<tr>
+<td>4</td><td>Masters</td>
+<td><input type="text" class="board"></td>
+<td><input type="number" class="percent" min="0" max="100" step="0.01"></td>
+<td><input type="text" class="year"></td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td>Course applied for:</td>
+<td>
+<input type="radio" name="course" value="MCA">MCA
+<input type="radio" name="course" value="M.Tech">M.Tech
+<input type="radio" name="course" value="MSC">MSC
+<input type="radio" name="course" value="Ph.D">Ph.D
+</td>
+<td></td>
+</tr>
+<tr>
+<td>Password:</td>
+<td><input type="password" id="password"></td>
+<td></td>
+</tr>
+<tr>
+<td>Date of TC:</td>
+<td><input type="date" id="tc"></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="3" style="text-align:center">
+<input type="submit" value="Submit">
+<input type="reset" value="Reset">
+</td>
+</tr>
+</table>
+</form>
+
+<script>
+function validateform() {
+    let fname = document.getElementById("fname").value.trim();
+    let lname = document.getElementById("lname").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let dob = document.getElementById("dob").value;
+    let mobile = document.getElementById("mobile").value.trim();
+    let address = document.getElementById("address").value.trim();
+    let city = document.getElementById("city").value.trim();
+    let pin = document.getElementById("pin").value.trim();
+    let state = document.getElementById("state").value.trim();
+    let country = document.getElementById("country").value.trim();
+    let password = document.getElementById("password").value;
+    let tc = document.getElementById("tc").value;
+
+    if (fname == "" || lname == "") {
+        alert("Enter first name and last name");
+        return false;
+    }
+
+    if (!email.includes("@") || !email.includes(".")) {
+        alert("Enter valid email");
+        return false;
+    }
+
+    if (dob == "") {
+        alert("Enter date of birth");
+        return false;
+    }
+
+    if (!/^[0-9]{10}$/.test(mobile)) {
+        alert("Enter valid 10 digit mobile number");
+        return false;
+    }
+
+    if (!document.querySelector('input[name="gender"]:checked')) {
+        alert("Select gender");
+        return false;
+    }
+
+    if (address == "" || city == "" || state == "" || country == "") {
+        alert("Fill address, city, state and country");
+        return false;
+    }
+
+    if (!/^[0-9]{6}$/.test(pin)) {
+        alert("Enter valid 6 digit pincode");
+        return false;
+    }
+
+    if (!document.querySelector('input[name="course"]:checked')) {
+        alert("Select a course");
+        return false;
+    }
+
+    if (password.length < 6) {
+        alert("Password must contain at least 6 characters");
+        return false;
+    }
+
+    if (tc == "") {
+        alert("Enter date of TC");
+        return false;
+    }
+
+    let percentages = document.querySelectorAll(".percent");
+    for (let p of percentages) {
+        if (p.value !== "" && (Number(p.value) < 0 || Number(p.value) > 100)) {
+            alert("Percentage must be between 0 and 100");
+            return false;
+        }
+    }
+
+    alert("Form submitted successfully");
+    return true;
+}
+</script>
+
 </body>
 </html>
