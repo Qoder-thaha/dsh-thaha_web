@@ -1,0 +1,15 @@
+.class-selector{
+          color:white;
+          background-color:#4CAF50;
+          padding:8px;
+       }
+id-selector{
+        color:orange;
+        background-color:#FFC107;
+        padding:8px;
+       }
+    p{
+      color:purple;
+      background-color:#E0E0E0;
+      padding:8px;
+     }
